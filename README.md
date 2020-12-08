@@ -1,8 +1,22 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+## Getting Started with Next.js and TypeScript
 
-First, run the development server:
+First, clone the repo:
+
+```bash
+git clone https://github.com/ibrahima92/next-typescript-example
+```
+
+Next, install the dependencies:
+
+```bash
+npm install
+# or
+yarn
+```
+
+Create a `tsconfig.json` file on the root of the project. You're good to go. Finally, run the development server:
 
 ```bash
 npm run dev

@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap');
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Nunito', sans-serif;
+  background: #f5f6f7;
+  color: #222;
+  font-size: 1rem;
+}
+
+.container {
+  max-width: 820px;
+  margin: auto;
+  padding: 1rem;
+}
+.container > h1 {
+  text-align: center;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
+}
+h1 {
+  text-transform: capitalize;
+  font-size: 1.1rem;
+}
+
+button {
+  padding: 0.4rem 1rem;
+  font-size: 1rem;
+  font-weight: 700;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+.Card {
+  background: #fff;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.Card--body {
+  width: 60%;
+}
+.Card--body-text {
+  color: #999;
+}
+
+.Card__button {
+  background: #fff;
+  border: 1px solid #920dbb;
+  color: #920dbb;
+}
+
+.Form {
+  background: #fff;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.Form--field {
+  margin: auto;
+  width: 60%;
+}
+
+.Form--field input {
+  display: block;
+  background: #f5f5f5;
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  border: 1px solid #920dbb;
+  margin-bottom: 1rem;
+  width: 100%;
+  outline: none;
+}
+
+.Form__button {
+  background: #920dbb;
+  color: #fff;
+  display: block;
+  margin: auto;
+}

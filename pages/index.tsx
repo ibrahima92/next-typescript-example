@@ -1,29 +1,52 @@
 import * as React from 'react'
-import AddBook from '../components/AddBook'
-import Book from '../components/Book'
-import { IBook } from '../types'
-import { useGetBooks } from '../API'
+import { InferGetStaticPropsType } from 'next'
+import AddPost from '../components/AddPost'
+import Post from '../components/Post'
+import { IPost } from '../types'
 
-export default function IndexPage() {
-  const [books, setBooks] = React.useState<IBook[]>([])
+const BASE_URL: string = 'https://jsonplaceholder.typicode.com/posts'
 
-  const fetchBooks = () => {
-    useGetBooks()
-      .then((books: IBook[]) => setBooks(books))
-      .catch((err: Error) => console.log(err))
+export default function IndexPage({
+  posts,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
+  const [postList, setPostList] = React.useState(posts)
+
+  const addPost = async (e: React.FormEvent, formData: IPost) => {
+    e.preventDefault()
+    const post: IPost = {
+      id: Math.random(),
+      title: formData.title,
+      body: formData.body,
+    }
+    setPostList([post, ...postList])
   }
 
-  React.useEffect(() => {
-    fetchBooks()
-  }, [])
+  const deletePost = async (id: number) => {
+    const posts: IPost[] = postList.filter((post: IPost) => post.id !== id)
+    console.log(posts)
+    setPostList(posts)
+  }
+
+  if (!postList) return <h1>Loading...</h1>
 
   return (
-    <main className='App'>
-      <h1>My books</h1>
-      <AddBook />
-      {books.map((book: IBook) => (
-        <Book key={book.id} book={book} />
+    <main className='container'>
+      <h1>My posts</h1>
+      <AddPost savePost={addPost} />
+      {postList.map((post: IPost) => (
+        <Post key={post.id} deletePost={deletePost} post={post} />
       ))}
     </main>
   )
+}
+
+export async function getStaticProps() {
+  const res = await fetch(BASE_URL)
+  const posts: IPost[] = await res.json()
+
+  return {
+    props: {
+      posts,
+    },
+  }
 }

@@ -1,6 +1,5 @@
-export interface IBook {
+export interface IPost {
   id: number
   title: string
-  description: string
-  author: string
+  body: string
 }
